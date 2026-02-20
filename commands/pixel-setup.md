@@ -85,7 +85,7 @@ Configure the pixel-mcp server and verify Aseprite installation.
 
 **Location:**
 - macOS/Linux: `~/.config/pixel-mcp/config.json`
-- Windows: `%APPDATA%\pixel-mcp\config.json`
+- Windows: `%HOME%\.config\pixel-mcp\config.json` (i.e., `C:\Users\<username>\.config\pixel-mcp\config.json`)
 
 **Contents:**
 ```json
@@ -129,9 +129,10 @@ Configure the pixel-mcp server and verify Aseprite installation.
 4. Set appropriate permissions (readable/writable by user)
 
 **Step 4: Test MCP Server**
-1. Run health check: `${CLAUDE_PLUGIN_ROOT}/bin/pixel-mcp --health`
-2. Capture output and check for success
-3. Report Aseprite version and MCP status
+1. Run health check (macOS/Linux): `${CLAUDE_PLUGIN_ROOT}/bin/pixel-mcp --health`
+2. Run health check (Windows): `${CLAUDE_PLUGIN_ROOT}/bin/pixel-mcp-windows-amd64.exe --health`
+3. Capture output and check for success
+4. Report Aseprite version and MCP status
 
 **Step 5: Report Results**
 1. Display configuration summary
@@ -198,6 +199,9 @@ Include in output if errors occur:
 3. **Manually edit config**: Edit `~/.config/pixel-mcp/config.json`
 4. **Test Aseprite directly**: Run `aseprite --version` in terminal
 5. **Check logs**: Set `log_file` in config for debugging
+6. **(Windows) `Missing environment variables: HOME` error**: Run `setx HOME "C:\Users\<username>"` and restart in a new terminal
+7. **(Windows) MCP server fails to start**: Change `command` in `.mcp.json` to `pixel-mcp-windows-amd64.exe`. Also update the cached config at `~/.claude/plugins/cache/...`
+8. **(Windows) Config changes not taking effect**: Edit both the original and the cached `.mcp.json` at `~/.claude/plugins/cache/pixel-plugin/pixel-plugin/<version>/.mcp.json`
 
 ### Platform-Specific Notes
 
@@ -216,6 +220,19 @@ Include in output if errors occur:
 - Use quotes around path if it contains spaces
 - Backslashes in path are okay, or use forward slashes
 - May need to run as Administrator for some installation paths
+- **`HOME` environment variable required**: Windows does not set `HOME` by default. You must register it manually:
+  ```
+  setx HOME "C:\Users\<username>"
+  ```
+  A **new terminal must be opened** after setting for changes to take effect. Verify with: `echo %HOME%`
+- **MCP server binary must be specified directly**: The default `command` in `.mcp.json` points to a bash wrapper script (`pixel-mcp`), which cannot be executed natively on Windows. Change it to the Windows binary:
+  ```json
+  "command": "${CLAUDE_PLUGIN_ROOT}/bin/pixel-mcp-windows-amd64.exe"
+  ```
+- **Plugin cache warning**: Claude Code uses a cached copy of the plugin config, not the original. When modifying `.mcp.json`, you must update both locations:
+  - Original: `~/.claude/plugins/pixel-plugin/.mcp.json`
+  - Cache: `~/.claude/plugins/cache/pixel-plugin/pixel-plugin/<version>/.mcp.json`
+- **Config file path**: The `.mcp.json` env references `${HOME}/.config/pixel-mcp/config.json`, so the actual config location on Windows is `C:\Users\<username>\.config\pixel-mcp\config.json`
 
 ### Configuration Tips
 
