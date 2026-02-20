@@ -34,3 +34,4 @@ test-outputs/*
 *.aseprite
 *.png
 *.gif
+.omc
