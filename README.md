@@ -88,7 +88,36 @@ claude plugin marketplace add ./pixel-plugin
 claude plugin install pixel-plugin@pixel-plugin
 ```
 
-### 3. Setup
+## Gemini CLI Quick Start
+
+### 1. Installation (Integrated)
+The easiest way to install this plugin as an extension in Gemini CLI:
+```bash
+gemini extensions install https://github.com/Mineru98/pixel-plugin
+```
+*Note: This will automatically handle binary permissions and create a default config file if it doesn't exist.*
+
+### 2. Manual Installation
+If you have already cloned the repository locally:
+```bash
+gemini extensions install ./pixel-plugin
+```
+
+### 3. Setup (Optional)
+By default, the plugin assumes Aseprite is installed at `/Applications/Aseprite.app/...` (macOS). If your Aseprite is located elsewhere, edit the config:
+```bash
+nano ~/.config/pixel-mcp/config.json
+```
+
+### 4. Usage
+Once installed, you can use natural language:
+```
+"Create a 32x32 Game Boy character"
+"Add a 4-frame walk cycle"
+"Export it as walk.gif"
+```
+
+### 3. Setup (for Claude Code)
 
 Configure Aseprite path (one-time setup):
 
