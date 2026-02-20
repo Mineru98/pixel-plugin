@@ -2,7 +2,7 @@
 
 Create, animate, and export pixel art using Aseprite through natural language and commands in Claude Code.
 
-*Powered by [pixel-mcp](https://github.com/willibrandon/pixel-mcp) - a Model Context Protocol server for Aseprite.*
+*Powered by [pixel-mcp](https://github.com/Mineru98/pixel-mcp) - a Model Context Protocol server for Aseprite.*
 
 ## Features
 
@@ -30,7 +30,7 @@ Create, animate, and export pixel art using Aseprite through natural language an
 
 ## How It Works
 
-This plugin uses the [pixel-mcp](https://github.com/willibrandon/pixel-mcp) Model Context Protocol server to communicate with Aseprite. The MCP server provides 40+ tools for pixel art operations and is bundled with the plugin.
+This plugin uses the [pixel-mcp](https://github.com/Mineru98/pixel-mcp) Model Context Protocol server to communicate with Aseprite. The MCP server provides 40+ tools for pixel art operations and is bundled with the plugin.
 
 ## Quick Start
 
@@ -49,25 +49,35 @@ In Claude Code, run:
 ```
 Then:
 1. Select "Add marketplace"
-2. Enter: `willibrandon/pixel-plugin` (for GitHub) or `./path/to/local/marketplace` (for local)
+2. Enter: `Mineru98/pixel-plugin` (for GitHub) or `./path/to/local/marketplace` (for local)
 3. Select "Browse and install plugins"
 4. Find and install `pixel-plugin`
 
-**Option B: From command line**
+**Option B: From Claude Code**
 
 ```bash
 # Add the GitHub marketplace
-claude plugin marketplace add willibrandon/pixel-plugin
+/plugin marketplace add Mineru98/pixel-plugin
+
+# Install the plugin
+/plugin install pixel-plugin
+```
+
+**Option C: From command line**
+
+```bash
+# Add the GitHub marketplace
+claude plugin marketplace add Mineru98/pixel-plugin
 
 # Install the plugin
 claude plugin install pixel-plugin
 ```
 
-**Option C: Local development/testing**
+**Option D: Local development/testing**
 
 ```bash
 # Clone the repository
-git clone https://github.com/willibrandon/pixel-plugin.git
+git clone https://github.com/Mineru98/pixel-plugin.git
 cd pixel-plugin
 
 # Add as local marketplace (from parent directory)
@@ -291,7 +301,7 @@ See [Known Issues](docs/KNOWN_ISSUES.md) for additional troubleshooting informat
 
 - **Aseprite**: v1.3.0 or higher
 - **Claude Code**: v1.0.0 or higher
-- **pixel-mcp**: MCP server (bundled) - [Source](https://github.com/willibrandon/pixel-mcp)
+- **pixel-mcp**: MCP server (bundled) - [Source](https://github.com/Mineru98/pixel-mcp)
 - **Disk Space**: ~50MB for plugin and binaries
 
 ## Contributing
