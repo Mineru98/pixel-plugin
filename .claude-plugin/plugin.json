@@ -1,14 +1,14 @@
 {
   "name": "pixel-plugin",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Create, animate, and export pixel art using Aseprite through natural language and commands. Supports retro palettes, animation, dithering, and game engine export.",
   "author": {
-    "name": "Brandon Williams",
-    "url": "https://github.com/willibrandon"
+    "name": "Mineru",
+    "url": "https://github.com/Mineru98"
   },
   "license": "MIT",
-  "homepage": "https://github.com/willibrandon/pixel-plugin",
-  "repository": "https://github.com/willibrandon/pixel-plugin.git",
+  "homepage": "https://github.com/Mineru98/pixel-plugin",
+  "repository": "https://github.com/Mineru98/pixel-plugin.git",
   "keywords": [
     "pixel art",
     "aseprite",
