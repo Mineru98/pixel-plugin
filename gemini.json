@@ -1,0 +1,17 @@
+{
+  "name": "pixel-plugin",
+  "version": "1.0.0",
+  "description": "Create, animate, and export pixel art using Aseprite through natural language.",
+  "author": "Mineru98",
+  "mcpServers": {
+    "aseprite": {
+      "command": "./bin/pixel-mcp-{{os}}-{{arch}}",
+      "env": {
+        "PIXEL_MCP_CONFIG": "{{home}}/.config/pixel-mcp/config.json"
+      }
+    }
+  },
+  "hooks": {
+    "postInstall": "chmod +x ./bin/pixel-mcp-* && mkdir -p ~/.config/pixel-mcp && [ ! -f ~/.config/pixel-mcp/config.json ] && echo '{\"aseprite_path\": \"/Applications/Aseprite.app/Contents/MacOS/aseprite\"}' > ~/.config/pixel-mcp/config.json || echo 'Config already exists.'"
+  }
+}
